@@ -1,0 +1,45 @@
+{% extends 'emissions/layout.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Compare</button>
+    </form>
+    <div id="data_table">
+        <h2 id="country_one">{{country_one}}</h2>
+        <h2 id="country_two">{{country_two}}</h2>
+        <table class="table" id="table1">
+                <thead style="border: 1px solid black;">
+                <tr>
+                    <th>Year</th>
+                    <th>CO2 Emissions (kt)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for year, emission in emissions_one.items %}
+                <tr>
+                    <td>{{year}}</td>
+                    <td>{{emission}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        <table class="table" id="table2">
+                <thead style="border: 1px solid black;">
+                <tr>
+                    <th>Year</th>
+                    <th>CO2 Emissions (kt)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for year, emission in emissions_two.items %}
+                <tr>
+                    <td>{{year}}</td>
+                    <td>{{emission}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+.table{
+    width: 50%;
+    max-width: 50%;
+    margin-bottom: 20px;
+    float: left;
+}
+
+#data_table{
+    margin: auto;
+    width: 50%;
+}
+
+.btn{
+    display: inherit;
+}
+
+.nav-bar{
+    display: inline-block;
+}
+
+#country_one{
+    display: inline;
+    float: left;
+}
+
+#country_two{
+    display: inline;
+    float: right;
+}

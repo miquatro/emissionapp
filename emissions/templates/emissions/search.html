@@ -1,0 +1,72 @@
+{% extends 'emissions/layout.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" id="btn_search" class="btn btn-primary">Search</button>
+</form>
+<script type="text/javascript">
+    var per_capita = "{{per_capita}}";
+    jQuery(document).ready(function(e){
+
+        if(per_capita == 'on'){
+            jQuery('#data2').hide();
+            console.log("KKONA");
+        }
+        else if(per_capita == 'None'){
+            $('#data3').hide();
+        }
+    })
+</script>
+<div id="data_table">
+    <table class="table" id="data1">
+            <thead style="border: 1px solid black;">
+            <tr>
+                <th>Year</th>
+                <th>Population</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for year, population in populations.items %}
+            <tr>
+                <th>{{year}}</th>
+                <td>{{population}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <table class="table" id="data2">
+            <thead style="border: 1px solid black;">
+            <tr>
+                <th>Year</th>
+                <th>CO2 Emissions (kt)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for year, emissions in emissions.items %}
+            <tr>
+                <th>{{year}}</th>
+                <td>{{emissions}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    <table class="table" id="data3">
+            <thead style="border: 1px solid black;">
+            <tr>
+                <th>Year</th>
+                <th>CO2 Emissions Per Capita (t)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for year, emissions in emissions_per_capita.items %}
+            <tr>
+                <th>{{year}}</th>
+                <td>{{emissions}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
