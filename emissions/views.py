@@ -44,6 +44,7 @@ class SearchView(TemplateView):
                                 request.session['per_capita'] = per_capita
                 else:
                         form = CountryForm()
+                        
                 # Parsing populations file
                 selectedCountry = request.session.get('country')
                 selectedYear = request.session.get('year')
